@@ -1,39 +1,32 @@
-const { buildShortcut, withVariables } = require("@joshfarrant/shortcuts-js");
-const {
-  conditional,
-  getBatteryLevel,
-  setLowPowerMode,
-  showResult,
-  chooseFromMenu,
-  runShortcut
-} = require("@joshfarrant/shortcuts-js/actions");
+const { buildShortcut } = require('@joshfarrant/shortcuts-js');
+const { chooseFromMenu, runShortcut } = require('@joshfarrant/shortcuts-js/actions');
 
 const foldersArr = [
   [
-    "Health",
+    'Health',
     [
       // The name of the folder
-      "Log Sleep", // The names of Shortcuts to contain in that folder
-      "Log Run",
-      "Log Cycle"
+      'Log Sleep', // The names of Shortcuts to contain in that folder
+      'Log Run',
+      'Log Cycle'
     ]
   ],
   [
-    "Home",
+    'Home',
     [
       [
-        "Lights",
+        'Lights',
         [
-          "Lights On", // We can go as many levels deep as we like
-          "Lights Off"
+          'Lights On', // We can go as many levels deep as we like
+          'Lights Off'
         ]
       ],
-      ["Heating", ["Heating On", "Heating Off"]],
-      ["Cameras", ["Cameras On", "Cameras Off"]],
-      ["Door", ["Lock Door", "Unlock Door"]]
+      ['Heating', ['Heating On', 'Heating Off']],
+      ['Cameras', ['Cameras On', 'Cameras Off']],
+      ['Door', ['Lock Door', 'Unlock Door']]
     ]
   ],
-  ["Audio", ["Play Playlist", "Resume Podcast"]]
+  ['Audio', ['Play Playlist', 'Resume Podcast']]
 ];
 
 const buildFolders = arr =>
@@ -61,7 +54,7 @@ const buildFolders = arr =>
 
 const actions = [
   chooseFromMenu({
-    prompt: "Open",
+    prompt: 'Open',
     items: buildFolders(foldersArr)
   })
 ];
@@ -69,6 +62,6 @@ const actions = [
 const shortcut = buildShortcut(actions);
 
 module.exports = {
-  name: "Folder Creator",
+  name: 'Folder Creator',
   shortcut
 };

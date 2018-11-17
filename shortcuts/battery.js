@@ -1,11 +1,11 @@
-const { withVariables, buildShortcut } = require("@joshfarrant/shortcuts-js");
+const { withVariables, buildShortcut } = require('@joshfarrant/shortcuts-js');
 
 const {
   conditional,
   getBatteryLevel,
   setLowPowerMode,
   showResult
-} = require("@joshfarrant/shortcuts-js/actions");
+} = require('@joshfarrant/shortcuts-js/actions');
 
 let batteryLevel;
 
@@ -14,7 +14,7 @@ const actions = [
     batteryLevel = id;
   }),
   conditional({
-    input: "<",
+    input: '<',
     value: 20,
     ifTrue: [
       setLowPowerMode({
@@ -33,6 +33,6 @@ const actions = [
 ];
 
 module.exports = {
-  name: "Battery",
+  name: 'Battery',
   shortcut: buildShortcut(actions)
 };

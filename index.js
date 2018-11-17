@@ -1,24 +1,13 @@
-const fs = require("fs");
-const path = require("path");
-const homedir = require("os").homedir();
+const fs = require('fs');
+const path = require('path');
+const homedir = require('os').homedir();
 
-let shortcutsPath = path.join(__dirname, "shortcuts");
+let shortcutsPath = path.join(__dirname, 'shortcuts');
 
 fs.readdirSync(shortcutsPath).forEach(shortcutPath => {
+  const { name, shortcut } = require(path.join(__dirname, 'shortcuts', shortcutPath));
 
-  const { name, shortcut } = require(path.join(
-    __dirname,
-    "shortcuts",
-    shortcutPath
-  ));
-
-  let iCloudPath = path.join(
-    homedir,
-    `Library`,
-    "Mobile Documents",
-    "com~apple~CloudDocs",
-    "Shortcuts"
-  );
+  let iCloudPath = path.join(homedir, 'Library', 'Mobile Documents', 'com~apple~CloudDocs', 'Shortcuts');
 
   try {
     fs.readdirSync(iCloudPath);
@@ -28,7 +17,7 @@ fs.readdirSync(shortcutsPath).forEach(shortcutPath => {
 
   fs.writeFile(path.join(iCloudPath, `${name}.shortcut`), shortcut, err => {
     if (err) {
-      console.error("Something went wrong :(", err);
+      console.error('Something went wrong :(', err);
       return;
     }
     console.log(`Shortcut ${name}.shortcut created!`);

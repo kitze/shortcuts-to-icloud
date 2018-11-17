@@ -1,10 +1,5 @@
-const { buildShortcut, withVariables } = require("@joshfarrant/shortcuts-js");
-const {
-  calculate,
-  comment,
-  number,
-  showResult
-} = require("@joshfarrant/shortcuts-js/actions");
+const { buildShortcut, withVariables } = require('@joshfarrant/shortcuts-js');
+const { calculate, comment, number, showResult } = require('@joshfarrant/shortcuts-js/actions');
 
 // We'll use this later to reference the output of a calculation
 let calcId;
@@ -12,7 +7,7 @@ let calcId;
 // Define our list of actions
 const actions = [
   comment({
-    text: "Hello, world!"
+    text: 'Hello, world!'
   }),
   number({
     number: 42
@@ -20,7 +15,7 @@ const actions = [
   calculate(
     {
       operand: 3,
-      operation: "/"
+      operation: '/'
     },
     id => {
       // We'll use this again in a moment
@@ -37,6 +32,6 @@ const actions = [
 ];
 
 module.exports = {
-  name: "Calculate",
+  name: 'Calculate',
   shortcut: buildShortcut(actions)
 };
